@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main_app/styles.css' %}">
+    <title>Similarly</title>
+</head>
+<body>
+    <!-- <h1>Similarly</h1>
+
+    <hr>
+
+    <p>Retrieves recommendations for: "music: Red Hot Chili Peppers, music: Pulp Fiction"</p>
+
+    <table>
+
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+        </tr>
+
+        {% for result in results.Similar.Results %}
+
+        <tr>
+            <td>{{ result.Name }}</td>
+            <td>{{ result.Type }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table> -->
+
+    <!-- Body Content Goes Here-->
+    {% block body %} {% endblock %}
+
+</body>
+</html>
