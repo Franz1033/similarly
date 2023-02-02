@@ -3,6 +3,60 @@
 {% block body %} 
 
 <!-- Insert Your Code Here-->
-<h1>Hello, World!</h1>
+
+<div class="container">
+
+    <div class="wrapper">
+
+        <h1>Similarly</h1> 
+        
+        <form action="{% url 'search' %}" method="get">
+            
+            <div id="searchFieldWrapper">
+                <select name="category" required>  
+                    <option value="" selected disabled>Category</option>
+                    <option value="any">Any</option>
+                    <option value="music">Music</option>
+                    <option value="movies">Movies</option>
+                    <option value="shows">Shows</option>
+                    <option value="podcasts">Podcasts</option>
+                    <option value="books">Books</option>
+                    <option value="authors">Authors</option>
+                    <option value="games">Games</option>
+                </select>
+                
+                <input type="search" name="query" placeholder="Enter your query here..." required>
+    
+                <input type="submit" value="Search">
+            </div>
+
+        </form>
+
+        <p>Discover similar items of your favorite music, movies, podcasts, books, authors, games, and TV shows.</p>
+    
+    </div>
+    
+
+</div>
+
+<footer>
+
+    <div>
+
+        <h3>Similarly</h3><br>
+        <small>© 2023, Similarly. All Rights Reserved.</small>
+
+    </div>
+
+    <div>
+
+        <a href="https://github.com/Franz1033"><i class="bi bi-github"></i></a>
+        <a href="https://github.com/theninanicole"><i class="bi bi-github"></i></a><br><br>
+
+        <small> Made with <i class="bi bi-heart"></i> by MetaFranz and CloudNine.</small>
+
+    </div>
+
+</footer>
 
 {% endblock %}

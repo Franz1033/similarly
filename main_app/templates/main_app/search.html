@@ -1,0 +1,41 @@
+{% extends 'main_app/layout.html' %}
+
+{% block body %} 
+
+<!-- Insert Your Code Here-->
+<h1>Similarly</h1>
+
+<hr>
+
+<p><b>Retrieves recommendations for: </b> "{{ results.Similar.Info.0.Name }}"</p>
+
+<table>
+
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+    </tr>
+
+    {% if results.Similar.Results|length == 0 %}
+
+        <tr>
+            <td>No results found.</td>
+            <td></td>
+        </tr>
+
+    {% else %}
+
+        {% for result in results.Similar.Results %}
+
+            <tr>
+                <td>{{ result.Name }}</td>
+                <td>{{ result.Type }}</td>
+            </tr>
+
+        {% endfor %}
+
+    {% endif %}
+
+</table> 
+
+{% endblock %}
