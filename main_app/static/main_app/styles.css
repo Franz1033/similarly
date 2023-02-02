@@ -54,6 +54,10 @@ tr:nth-child(even) {
     color: white;
     font-size: 3rem;
     text-align: center;
+    background: #00ffea;
+    background: linear-gradient(to right, #00ffea 0%, #003488 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .wrapper p {
