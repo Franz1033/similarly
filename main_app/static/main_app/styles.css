@@ -113,6 +113,7 @@ select {
     -moz-appearance:none; /* Firefox */
     -webkit-appearance:none; /* Safari and Chrome */
     appearance:none;
+    transition: 0.3s;
 }
 
 select:hover {
@@ -127,6 +128,7 @@ input[type="submit"] {
     text-align: center;
     color: white;
     background-color: var(--color-4);  
+    transition: 0.3s;
 }
 
 input[type="submit"]:hover {
@@ -147,5 +149,6 @@ footer {
 }
 
 footer a {
+    margin: 0px 2.5px;
     color: white;
 }
