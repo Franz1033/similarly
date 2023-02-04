@@ -3,39 +3,100 @@
 {% block body %} 
 
 <!-- Insert Your Code Here-->
-<h1>Similarly</h1>
+<div id="searchContainer">
 
-<hr>
+    <button onclick="topFunction()" id="scrollTopBtn" title="Go to top"><i class="bi bi-arrow-up"></i></button>
 
-<p><b>Retrieves recommendations for: </b> "{{ results.Similar.Info.0.Name }}"</p>
+    <nav>
 
-<table>
+        <h1 class="logo"><a href="{% url 'index' %}">Similarly</a></h1>
 
-    <tr>
-        <th>Name</th>
-        <th>Type</th>
-    </tr>
+        <form action="{% url 'search' %}" method="get">
+                
+            <div class="searchFieldWrapper">
+                <select name="category" required>  
+                    <option value="" selected disabled>Category</option>
+                    <option value="any">Any</option>
+                    <option value="music">Music</option>
+                    <option value="movies">Movies</option>
+                    <option value="shows">Shows</option>
+                    <option value="podcasts">Podcasts</option>
+                    <option value="books">Books</option>
+                    <option value="authors">Authors</option>
+                    <option value="games">Games</option>
+                </select>
+                
+                <input type="search" name="query" placeholder="Enter your query here..." required>
 
-    {% if results.Similar.Results|length == 0 %}
+                <button type="submit"><i class="bi bi-search"></i></button>
+            </div>
 
-        <tr>
+        </form>
+
+    </nav>
+
+    <div>
+
+        <p><b>Search results for: </b> "{{ results.Similar.Info.0.Name }}"</p><br>
+   
+        {% if results.Similar.Results|length == 0 %}
+
             <td>No results found.</td>
-            <td></td>
-        </tr>
 
-    {% else %}
+        {% else %}
 
-        {% for result in results.Similar.Results %}
+            {% for result in results.Similar.Results %}
 
-            <tr>
-                <td>{{ result.Name }}</td>
-                <td>{{ result.Type }}</td>
-            </tr>
+                <div class="result">
+                    
+                    <h3 class="name">{{ result.Name }} </h3>
+                    
+                    <small class="category">{{ result.Type }}</small>
+                    
+                    <iframe class="youtube-video" src="{{ result.yUrl }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-        {% endfor %}
+                    <p class="description">{{ result.wTeaser }}</p><br>
 
-    {% endif %}
+                    {% if w.Url != "" %}
 
-</table> 
+                        <small class="wikipedia-article"><a href="{{ result.wUrl }}">Learn more</a></small>
 
+                    {% endif %}
+
+                    {{ w.yID }}
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+    
+    </div>
+
+</div>
+
+<script>
+
+    // Get the button
+    let scrollTopBtn = document.getElementById("scrollTopBtn");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollTopBtn.style.display = "block";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+</script>
+    
 {% endblock %}
